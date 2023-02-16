@@ -15,6 +15,7 @@ using System.Text;
 namespace ProjectManager.Module.BusinessObjects
 {
     [DefaultClassOptions]
+    [NavigationItem("Marketing")]
     //[ImageName("BO_Contact")]
     //[DefaultProperty("DisplayMemberNameForLookupEditorsOfThisType")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
