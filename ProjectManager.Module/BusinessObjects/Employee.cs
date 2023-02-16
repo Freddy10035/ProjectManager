@@ -55,6 +55,7 @@ namespace ProjectManager.Module.BusinessObjects
         string name;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleRequiredField(DefaultContexts.Save)]
         public string Name
         {
             get => name;

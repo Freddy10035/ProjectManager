@@ -49,6 +49,7 @@ namespace ProjectManager.Module.BusinessObjects
         //}
 
 
+        Customer customer;
         Employee assignedTo;
         string projectName;
 
@@ -59,12 +60,32 @@ namespace ProjectManager.Module.BusinessObjects
             set => SetPropertyValue(nameof(ProjectName), ref projectName, value);
         }
 
-        
+
         [Association("Employee-Projects")]
         public Employee AssignedTo
         {
             get => assignedTo;
             set => SetPropertyValue(nameof(AssignedTo), ref assignedTo, value);
         }
+
+        [Association("Project-ProjectTasks")]
+        public XPCollection<ProjectTask> ProjectTasks
+        {
+            get
+            {
+                return GetCollection<ProjectTask>(nameof(ProjectTasks));
+            }
+
+        }
+
+        
+        [Association("Customer-Projects")]
+        public Customer Customer
+        {
+            get => customer;
+            set => SetPropertyValue(nameof(Customer), ref customer, value);
+        }
+
+
     }
 }

@@ -32,20 +32,60 @@ namespace ProjectManager.Module.BusinessObjects
         {
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+            Status = Status.ToDo;
         }
-        //private string _PersistentProperty;
-        //[XafDisplayName("My display name"), ToolTip("My hint message")]
-        //[ModelDefault("EditMask", "(000)-00"), Index(0), VisibleInListView(false)]
-        //[Persistent("DatabaseColumnName"), RuleRequiredField(DefaultContexts.Save)]
-        //public string PersistentProperty {
-        //    get { return _PersistentProperty; }
-        //    set { SetPropertyValue(nameof(PersistentProperty), ref _PersistentProperty, value); }
-        //}
 
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
+
+        Status status;
+        DateTime endDate;
+        DateTime startDate;
+        string subject;
+        Project project;
+
+        [Association("Project-ProjectTasks")]
+        public Project Project
+        {
+            get => project;
+            set => SetPropertyValue(nameof(Project), ref project, value);
+        }
+
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Subject
+        {
+            get => subject;
+            set => SetPropertyValue(nameof(Subject), ref subject, value);
+        }
+
+
+        public DateTime StartDate
+        {
+            get => startDate;
+            set => SetPropertyValue(nameof(StartDate), ref startDate, value);
+        }
+
+
+        public DateTime EndDate
+        {
+            get => endDate;
+            set => SetPropertyValue(nameof(EndDate), ref endDate, value);
+        }
+
+        
+        public Status Status
+        {
+            get => status;
+            set => SetPropertyValue(nameof(Status), ref status, value);
+        }
+
+        
+    }
+
+    public enum Status
+    {
+        ToDo = 0,
+        InProgress = 1,
+        Completed = 2,
+        Deferred = 3
     }
 }

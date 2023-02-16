@@ -33,19 +33,33 @@ namespace ProjectManager.Module.BusinessObjects
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
-        //private string _PersistentProperty;
-        //[XafDisplayName("My display name"), ToolTip("My hint message")]
-        //[ModelDefault("EditMask", "(000)-00"), Index(0), VisibleInListView(false)]
-        //[Persistent("DatabaseColumnName"), RuleRequiredField(DefaultContexts.Save)]
-        //public string PersistentProperty {
-        //    get { return _PersistentProperty; }
-        //    set { SetPropertyValue(nameof(PersistentProperty), ref _PersistentProperty, value); }
-        //}
 
-        //[Action(Caption = "My UI Action", ConfirmationMessage = "Are you sure?", ImageName = "Attention", AutoCommit = true)]
-        //public void ActionMethod() {
-        //    // Trigger a custom business logic for the current record in the UI (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112619.aspx).
-        //    this.PersistentProperty = "Paid";
-        //}
+
+        Customer customer;
+        string description;
+        string caseStudy;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string CaseStudy
+        {
+            get => caseStudy;
+            set => SetPropertyValue(nameof(CaseStudy), ref caseStudy, value);
+        }
+
+
+        [Size(SizeAttribute.Unlimited)]
+        public string Description
+        {
+            get => description;
+            set => SetPropertyValue(nameof(Description), ref description, value);
+        }
+
+        
+        [Association("Customer-Testimonialss")]
+        public Customer Customer
+        {
+            get => customer;
+            set => SetPropertyValue(nameof(Customer), ref customer, value);
+        }
     }
 }
