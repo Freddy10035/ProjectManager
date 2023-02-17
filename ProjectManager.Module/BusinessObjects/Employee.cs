@@ -49,6 +49,7 @@ namespace ProjectManager.Module.BusinessObjects
         //}
 
 
+        byte[] image;
         bool active;
         DateTime birthday;
         string lastName;
@@ -77,7 +78,7 @@ namespace ProjectManager.Module.BusinessObjects
             set => SetPropertyValue(nameof(Birthday), ref birthday, value);
         }
 
-        
+
         public bool Active
         {
             get => active;
@@ -92,6 +93,13 @@ namespace ProjectManager.Module.BusinessObjects
                 return GetCollection<Project>(nameof(Projects));
             }
 
+        }
+
+        [ImageEditor]
+        public byte[] Image
+        {
+            get => image;
+            set => SetPropertyValue(nameof(Image), ref image, value);
         }
 
 
